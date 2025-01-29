@@ -26,11 +26,13 @@
             dune_3
           ])
           ++ (with ml-pkgs; [
-            findlib
             ocaml
             ocamlformat
-            zarith
           ]);
+        deps-propagated = with ml-pkgs; [
+          findlib
+          zarith
+        ];
 
         env = {
           DUNEOPT = "--display=short";
@@ -84,6 +86,7 @@
               '';
 
               nativeBuildInputs = deps-native;
+              propagatedBuildInputs = deps-propagated;
 
               DUNEOPT = "--display=short";
             }
@@ -107,7 +110,7 @@
           );
         };
 
-        devShells.default = pkgs.mkShell ({ packages = deps-native; } // env);
+        devShells.default = pkgs.mkShell ({ packages = deps-native ++ deps-propagated; } // env);
       }
     );
 }
