@@ -585,6 +585,15 @@ let pp_haskell_gen k mp rls = match rls with
     let str = if is_upper str && not (upperkind k) then ("_"^str) else str in
     if ModPath.equal (base_mp mp) (top_visible_mp ()) then str else s^"."^str
 
+(* Rust: TODO *)
+
+let pp_rust_gen k mp rls = match rls with
+  | [] -> assert false
+  | s::rls' ->
+    let str = pseudo_qualify rls' in
+    let str = if is_upper str && not (upperkind k) then ("_"^str) else str in
+    if ModPath.equal (base_mp mp) (top_visible_mp ()) then str else s^"."^str
+
 (* Main name printing function for a reference *)
 
 let pp_global_with_key k key r =
@@ -603,6 +612,7 @@ let pp_global_with_key k key r =
       | JSON -> dottify (List.map unquote rls)
       | Haskell -> if modular () then pp_haskell_gen k mp rls else s
       | Ocaml -> pp_ocaml_gen k mp rls (Some l)
+      | Rust -> pp_rust_gen k mp rls
 
 let pp_global k r =
   pp_global_with_key k (repr_of_r r) r

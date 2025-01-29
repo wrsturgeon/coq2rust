@@ -27,6 +27,11 @@ Extraction Language JSON.
 Fail Extract Foreign Constant ax_fun => "my_c_fun".
 Fail Extract Callback "call_my_fun" my_fun.
 
+(* Extraction of foreign constant and callback for Rust must fail *)
+Extraction Language Rust.
+Extract Inlined Constant ax_fun => "my_ml_fun".
+Fail Extract Foreign Constant ax_fun => "my_c_fun".
+
 (* Extraction of foreign constant for already defined inlined ml function must fail. *)
 Extraction Language OCaml.
 Extract Inlined Constant ax_fun => "my_ml_fun".

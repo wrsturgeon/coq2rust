@@ -110,7 +110,9 @@
           );
         };
 
-        devShells.default = pkgs.mkShell ({ packages = deps-native ++ deps-propagated; } // env);
+        devShells.default = pkgs.mkShell (
+          { packages = deps-native ++ deps-propagated ++ (with ml-pkgs; [ ocamllsp ]); } // env
+        );
       }
     );
 }

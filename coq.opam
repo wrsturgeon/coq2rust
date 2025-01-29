@@ -13,7 +13,6 @@ depends: [
   "rocq-prover" {= version}
   "coq-core" {= version}
   "coq-stdlib"
-  "coqide-server" {= version}
   "odoc" {with-doc}
 ]
 dev-repo: "git+https://github.com/coq/coq.git"
