@@ -47,6 +47,7 @@
 revision
 TAGS
 .DS_Store
+.direnv
 .pc
 _build
 _build_vo

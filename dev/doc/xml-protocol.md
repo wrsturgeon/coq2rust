@@ -9,7 +9,6 @@ with Coq 8.5, and is used by RocqDE, [vscoq legacy](https://github.com/coq-commu
 
 A somewhat out-of-date description of the async state machine is
 [documented here](https://github.com/ejgallego/jscoq/blob/v8.16/etc/notes/coq-notes.md).
-OCaml types for the protocol can be found in the [`ide/protocol/interface.ml` file](/ide/protocol/interface.ml).
 
 Changes to the XML protocol are documented as part of [`dev/doc/changes.md`](/dev/doc/changes.md).
 

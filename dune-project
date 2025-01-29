@@ -93,39 +93,6 @@ by Rocq in every .v file, as well as other modules bound to the
 Corelib.* and Ltac2.* namespaces."))
 
 (package
- (name coqide-server)
- (depends
-  (rocq-runtime (= :version)))
- (synopsis "The Rocq Prover, XML protocol server")
- (description "The Rocq Prover is an interactive theorem prover, or proof assistant. It provides
-a formal language to write mathematical definitions, executable
-algorithms and theorems together with an environment for
-semi-interactive development of machine-checked proofs.
-
-This package provides the `coqidetop` language server, an
-implementation of Rocq's [XML protocol](https://github.com/coq/coq/blob/master/dev/doc/xml-protocol.md)
-which allows clients, such as RocqIDE, to interact with the Rocq Prover in a
-structured way."))
-
-(package
- (name rocqide)
- (depends
-  (ocamlfind :build)
-  (conf-findutils :build)
-  conf-adwaita-icon-theme
-  (coqide-server (= :version))
-  (cairo2 (>= 0.6.4))
-  (lablgtk3-sourceview3 (and (>= 3.1.2) (or (>= 3.1.5) (<> :os "windows")))))
- (synopsis "The Rocq Prover --- GTK3 IDE")
- (description "The Rocq Prover is an interactive theorem prover, or proof assistant. It provides
-a formal language to write mathematical definitions, executable
-algorithms and theorems together with an environment for
-semi-interactive development of machine-checked proofs.
-
-This package provides the RocqIDE, a graphical user interface for the
-development of interactive proofs."))
-
-(package
  (name coq-doc)
  (license "OPUBL-1.0")
  (depends
@@ -168,6 +135,5 @@ This package is a virtual package gathering the rocq-core and rocq-stdlib packag
  (depends
   (rocq-prover (= :version))
   (coq-core (= :version))
-  coq-stdlib
-  (coqide-server (= :version)))
+  coq-stdlib)
  (synopsis "Compatibility metapackage for Coq after the Rocq renaming"))

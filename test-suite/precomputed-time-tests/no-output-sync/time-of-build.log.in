@@ -761,7 +761,6 @@ Makefile.ci
 Makefile.common
 Makefile.dev
 Makefile.doc
-Makefile.ide
 Makefile.install
 Makefile.make
 Makefile.vofiles
@@ -777,8 +776,6 @@ configure.ml
 coq-doc.opam
 coq.opam
 coq.opam.docker
-coqide-server.opam
-coqide.opam
 coqpp
 default.nix
 dev
@@ -787,7 +784,6 @@ dune
 dune-project
 engine
 gramlib
-ide
 install.sh
 interp
 kernel
@@ -891,7 +887,6 @@ CI_SERVER_VERSION_MINOR=4
 CI_SERVER_VERSION_PATCH=0
 COMPILER=4.05.0
 COMPILER_EDGE=4.10.0
-COQIDE_OPAM=cairo2.0.6.1 lablgtk3-sourceview3.3.1.0
 DEBIAN_FRONTEND=noninteractive
 FF_K8S_USE_ENTRYPOINT_OVER_COMMAND=true
 FULL_CI=true
@@ -1057,9 +1052,6 @@ total 377964
 -rwxr-xr-x 1 root root  9648760 Sep  1 11:46 coqchk
 -rwxr-xr-x 1 root root  5855160 Sep  1 11:46 coqdep
 -rwxr-xr-x 1 root root  4413792 Sep  1 11:46 coqdoc
--rwxr-xr-x 1 root root 11526312 Sep  1 11:47 coqide
--rwxr-xr-x 1 root root 25110448 Sep  1 11:47 coqidetop
--rwxr-xr-x 1 root root 25110448 Sep  1 11:47 coqidetop.opt
 -rwxr-xr-x 1 root root   449295 Sep  1 11:46 coqpp
 -rwxr-xr-x 1 root root 32153472 Sep  1 11:47 coqproofworker.byte
 -rwxr-xr-x 1 root root 24673424 Sep  1 11:46 coqproofworker.opt
@@ -1072,7 +1064,6 @@ total 377964
 -rwxr-xr-x 1 root root 24673288 Sep  1 11:46 coqtop.opt
 -rwxr-xr-x 1 root root  1821312 Sep  1 11:46 coqwc
 -rwxr-xr-x 1 root root  2827416 Sep  1 11:46 coqworkmgr
--rwxr-xr-x 1 root root  5905992 Sep  1 11:47 fake_ide
 -rwxr-xr-x 1 root root  1757920 Sep  1 11:46 ocamllibdep
 -rwxr-xr-x 1 root root  1877056 Sep  1 11:46 votour
 ++ CI_BUILD_DIR=/builds/coq/coq/_build_ci
@@ -1308,9 +1299,6 @@ total 377964
 -rwxr-xr-x 1 root root  9648760 Sep  1 11:46 coqchk
 -rwxr-xr-x 1 root root  5855160 Sep  1 11:46 coqdep
 -rwxr-xr-x 1 root root  4413792 Sep  1 11:46 coqdoc
--rwxr-xr-x 1 root root 11526312 Sep  1 11:47 coqide
--rwxr-xr-x 1 root root 25110448 Sep  1 11:47 coqidetop
--rwxr-xr-x 1 root root 25110448 Sep  1 11:47 coqidetop.opt
 -rwxr-xr-x 1 root root   449295 Sep  1 11:46 coqpp
 -rwxr-xr-x 1 root root 32153472 Sep  1 11:47 coqproofworker.byte
 -rwxr-xr-x 1 root root 24673424 Sep  1 11:46 coqproofworker.opt
@@ -1323,7 +1311,6 @@ total 377964
 -rwxr-xr-x 1 root root 24673288 Sep  1 11:46 coqtop.opt
 -rwxr-xr-x 1 root root  1821312 Sep  1 11:46 coqwc
 -rwxr-xr-x 1 root root  2827416 Sep  1 11:46 coqworkmgr
--rwxr-xr-x 1 root root  5905992 Sep  1 11:47 fake_ide
 -rwxr-xr-x 1 root root  1757920 Sep  1 11:46 ocamllibdep
 -rwxr-xr-x 1 root root  1877056 Sep  1 11:46 votour
 ++ CI_BUILD_DIR=/builds/coq/coq/_build_ci

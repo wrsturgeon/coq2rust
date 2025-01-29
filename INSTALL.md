@@ -34,11 +34,6 @@ To compile Rocq yourself, you need:
   ties to even as default rounding mode (most architectures
   should work nowadays)
 
-- for RocqIDE, the
-  [lablgtk3-sourceview3](https://github.com/garrigue/lablgtk) library
-  (version >= 3.1.2), and the corresponding GTK 3.x libraries, as
-  of today (gtk+3 >= 3.18 and gtksourceview3 >= 3.18)
-
 - [optional] GNU Make (version >= 3.81)
 
 See [below](#Known-Problems) for a discussion of platform-specific
@@ -50,21 +45,16 @@ are checked at configure time, preventing compilation. In the
 unlikely event an incompatibility remains undetected, using `Floats`
 would enable proving `False` on this architecture.
 
-Note that OCaml dependencies (`zarith` and `lablgtk3-sourceview3` at
+Note that OCaml dependencies (`zarith` at
 this moment) must be properly registered with `findlib/ocamlfind`
 since Rocq's build system uses `findlib` to locate them.
-
-Debian / Ubuntu users can get the necessary system packages for
-RocqIDE with:
-
-    $ sudo apt-get install libgtksourceview-3.0-dev
 
 Opam (https://opam.ocaml.org/) is recommended to install OCaml and
 the corresponding packages.
 
     $ opam switch create rocq --packages="ocaml-variants.4.14.1+options,ocaml-option-flambda"
     $ eval $(opam env)
-    $ opam install dune ocamlfind zarith lablgtk3-sourceview3
+    $ opam install dune ocamlfind zarith
 
 should get you a reasonable OCaml environment to compile Rocq. See the
 OPAM documentation for more help.
@@ -87,14 +77,12 @@ but final users must always use the release build. See
 [dev/doc/build-system.dune.md](dev/doc/build-system.dune.md)
 for more details.
 
-To build and install Rocq (and RocqIDE if desired) do:
+To build and install Rocq do:
 
     $ ./configure -prefix <install_prefix> $options
     $ make dunestrap
-    $ dune build -p rocq-runtime,coq-core,rocq-core,coq,coqide-server,rocqide
-    $ dune install --prefix=<install_prefix> rocq-runtime coq-core rocq-core coq coqide-server rocqide
-
-You can drop the `rocqide` packages if not needed.
+    $ dune build -p rocq-runtime,coq-core,rocq-core,coq
+    $ dune install --prefix=<install_prefix> rocq-runtime coq-core rocq-core coq
 
 Packagers may want to play with `dune install` options as to tweak
 installation path, the `-prefix` argument in `./configure` tells Rocq

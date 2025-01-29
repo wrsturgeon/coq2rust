@@ -21,25 +21,6 @@
     (bash "echo '\"$(dirname \"$0\")\"/%{bin:coqtop} -I \"$(dirname \"$0\")/%{workspace_root}/../install/default/lib\" -coqlib \"$(dirname \"$0\")/%{project_root}\" \"$@\"'")
     (run chmod +x %{targets})))))
 
-; coqidetop
-
-(alias
- (name coqidetop-prelude)
- (deps
-  %{bin:coqidetop.opt}
-   ; XXX: bug, we are missing the dep on the _install meta file...
-  %{project_root}/theories/Init/Prelude.vo))
-
-(rule
- (targets coqidetop.opt)
- (deps (alias coqidetop-prelude))
- (action
-  (with-stdout-to %{targets}
-   (progn
-    (echo "#!/usr/bin/env bash\n")
-    (bash "echo '\"$(dirname \"$0\")\"/%{bin:coqidetop.opt} -I \"$(dirname \"$0\")/%{workspace_root}/../install/default/lib\" -coqlib \"$(dirname \"$0\")/%{project_root}\" \"$@\"'")
-    (run chmod +x %{targets})))))
-
 ; coqc
 
 (alias
@@ -100,29 +81,4 @@
    (progn
     (echo "#!/usr/bin/env bash\n")
     (bash "echo '\"$(dirname \"$0\")\"/%{bin:coqtop.byte} -I \"$(dirname \"$0\")/%{workspace_root}/../install/default/lib\" -coqlib \"$(dirname \"$0\")\"/%{project_root} \"$@\"'")
-    (run chmod +x %{targets})))))
-
-; rocqide
-
-(alias
- (name rocqide-prelude)
- (deps
-  ; without this if the gtk libs are not available dune can try to use
-  ; rocqide from PATH instead of giving a nice error
-  ; there is no problem with the other shims since they don't depend on optional build products
-  %{project_root}/ide/rocqide/rocqide_main.exe
-  %{bin:rocqworker}
-  %{bin:coqidetop}
-  %{project_root}/theories/Init/Prelude.vo
-  %{project_root}/coqide-server.install
-  %{project_root}/rocqide.install))
-
-(rule
- (targets rocqide)
- (deps (alias rocqide-prelude))
- (action
-  (with-stdout-to %{targets}
-   (progn
-    (echo "#!/usr/bin/env bash\n")
-    (bash "echo '\"$(dirname \"$0\")\"/%{bin:rocqide} -I \"$(dirname \"$0\")/%{workspace_root}/../install/default/lib\" -coqlib \"$(dirname \"$0\")\"/%{project_root} \"$@\"'")
     (run chmod +x %{targets})))))
